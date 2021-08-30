@@ -81,6 +81,62 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Aim"",
+                    ""type"": ""Button"",
+                    ""id"": ""41563f99-dd78-4690-8117-084084c20561"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Sprint"",
+                    ""type"": ""Button"",
+                    ""id"": ""11eed2f5-9d53-412f-9cf9-b98582a4ae8f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
+                },
+                {
+                    ""name"": ""NextWeapon"",
+                    ""type"": ""Button"",
+                    ""id"": ""c24744ba-48df-4d78-acf8-f6af8def0e9b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""PreviousWeapon"",
+                    ""type"": ""Button"",
+                    ""id"": ""bb9cdd28-c617-4b57-9311-d7dccc571b26"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Heal"",
+                    ""type"": ""Button"",
+                    ""id"": ""147aee6a-35e2-4711-a978-8bd6b8d6f8bf"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""OpenMenu"",
+                    ""type"": ""Button"",
+                    ""id"": ""25b7bf32-7252-452c-9fd6-55230e18182f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""OpenShop"",
+                    ""type"": ""Button"",
+                    ""id"": ""be3688b9-9917-41cb-950a-07fb0b288e80"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -97,8 +153,8 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""30264960-b044-4367-bcc3-13abe2946d86"",
-                    ""path"": ""<DualShockGamepad>/rightTrigger"",
+                    ""id"": ""fba47c70-631c-446e-a601-9abab0cfaa01"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
@@ -163,10 +219,10 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""3e5f1bae-f5f2-4be9-9348-b0193f680f99"",
-                    ""path"": ""<DualShockGamepad>/leftStick"",
+                    ""id"": ""3f5b23f4-cba6-4d37-b6aa-f9a4315fa311"",
+                    ""path"": ""<Gamepad>/leftStick"",
                     ""interactions"": """",
-                    ""processors"": """",
+                    ""processors"": ""StickDeadzone"",
                     ""groups"": ""Gamepad"",
                     ""action"": ""Move"",
                     ""isComposite"": false,
@@ -177,7 +233,7 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                     ""id"": ""b39c6a5f-4227-4008-ab3f-60fd212c5cdc"",
                     ""path"": ""<Mouse>/delta"",
                     ""interactions"": """",
-                    ""processors"": """",
+                    ""processors"": ""ScaleVector2(x=0.3,y=0.3)"",
                     ""groups"": ""Mouse and Keyboard"",
                     ""action"": ""Look"",
                     ""isComposite"": false,
@@ -185,10 +241,10 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""b107af5b-a213-451e-9a1d-5ab1aba5ab6a"",
-                    ""path"": ""<DualShockGamepad>/rightStick"",
+                    ""id"": ""001b0305-ada4-4fed-a034-8c6d120fb9c6"",
+                    ""path"": ""<Gamepad>/rightStick"",
                     ""interactions"": """",
-                    ""processors"": ""ScaleVector2(x=3,y=3),StickDeadzone"",
+                    ""processors"": ""StickDeadzone"",
                     ""groups"": ""Gamepad"",
                     ""action"": ""Look"",
                     ""isComposite"": false,
@@ -207,8 +263,8 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""8e49f625-9a00-4539-8974-1c6d725a6f27"",
-                    ""path"": ""<DualShockGamepad>/buttonNorth"",
+                    ""id"": ""eeed9f82-d812-4c69-8838-7615302886c6"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
@@ -229,8 +285,8 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""d598c843-df3c-4bb7-b920-55cd2d160999"",
-                    ""path"": ""<DualShockGamepad>/buttonEast"",
+                    ""id"": ""8f98899a-3872-406d-b120-aee4a9d938ee"",
+                    ""path"": ""<Gamepad>/buttonEast"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
@@ -241,7 +297,7 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""5cd78a45-cde7-4d11-8649-878761b533bf"",
-                    ""path"": ""<Mouse>/rightButton"",
+                    ""path"": ""<Keyboard>/f"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Mouse and Keyboard"",
@@ -251,8 +307,8 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""18220705-3970-4c74-b3cd-dd7848cbf568"",
-                    ""path"": ""<DualShockGamepad>/leftTrigger"",
+                    ""id"": ""616d2de6-ce1b-4a14-a091-b36816addd88"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
@@ -273,8 +329,8 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""61bcf7e7-4564-4099-926e-d749354b6745"",
-                    ""path"": ""<DualShockGamepad>/buttonSouth"",
+                    ""id"": ""1d256a0e-1d58-4908-8c39-796adb213c02"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
@@ -295,12 +351,166 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""66023eef-92db-46f5-ba53-f2f2886f146a"",
-                    ""path"": ""<DualShockGamepad>/buttonWest"",
+                    ""id"": ""1f79dc08-eb52-4f92-ad80-3187eefda47d"",
+                    ""path"": ""<Gamepad>/buttonWest"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
                     ""action"": ""Reload"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""320e6fe6-8fe1-4c31-b220-8c4904a4b2be"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Mouse and Keyboard"",
+                    ""action"": ""Aim"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""30dae788-b489-4cd7-a534-2b1fbe983853"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Aim"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""18c0fa9b-e5e7-439c-83bf-8ff95dacc872"",
+                    ""path"": ""<Keyboard>/shift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Mouse and Keyboard"",
+                    ""action"": ""Sprint"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""08de9fcb-2a4e-4a2c-b29f-499e8a3c3f59"",
+                    ""path"": ""<Gamepad>/leftStickPress"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Sprint"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a377bf44-fb6c-4d95-8a9f-d110f53eb797"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Mouse and Keyboard"",
+                    ""action"": ""NextWeapon"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ddb0e43a-b39d-4aae-b992-52cd28f5b87d"",
+                    ""path"": ""<Gamepad>/dpad/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""NextWeapon"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bd467ea8-ec86-4424-ad8a-e3a1191706ed"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Mouse and Keyboard"",
+                    ""action"": ""PreviousWeapon"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bba9fc61-a309-4b26-8c46-331690c784a3"",
+                    ""path"": ""<Gamepad>/dpad/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""PreviousWeapon"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""52916cbc-8a4c-43d9-8c3d-e91da4c0c8ed"",
+                    ""path"": ""<Keyboard>/z"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Mouse and Keyboard"",
+                    ""action"": ""Heal"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f364811a-989c-4b5b-a955-39de35664ac5"",
+                    ""path"": ""<Gamepad>/dpad/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Heal"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e0337593-286e-4952-ada0-6454cad3d7b1"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Mouse and Keyboard"",
+                    ""action"": ""OpenMenu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ca0d5870-f328-42ad-a255-6d350966590c"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""OpenMenu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""20493d64-aeca-444e-8f8c-21f2c7d70f38"",
+                    ""path"": ""<Keyboard>/b"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Mouse and Keyboard"",
+                    ""action"": ""OpenShop"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d0e7f568-66c1-469f-93fb-8ee3b64b6b1c"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""OpenShop"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -347,6 +557,13 @@ public class @PlayerInput : IInputActionCollection, IDisposable
         m_Player_Throw = m_Player.FindAction("Throw", throwIfNotFound: true);
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         m_Player_Reload = m_Player.FindAction("Reload", throwIfNotFound: true);
+        m_Player_Aim = m_Player.FindAction("Aim", throwIfNotFound: true);
+        m_Player_Sprint = m_Player.FindAction("Sprint", throwIfNotFound: true);
+        m_Player_NextWeapon = m_Player.FindAction("NextWeapon", throwIfNotFound: true);
+        m_Player_PreviousWeapon = m_Player.FindAction("PreviousWeapon", throwIfNotFound: true);
+        m_Player_Heal = m_Player.FindAction("Heal", throwIfNotFound: true);
+        m_Player_OpenMenu = m_Player.FindAction("OpenMenu", throwIfNotFound: true);
+        m_Player_OpenShop = m_Player.FindAction("OpenShop", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -404,6 +621,13 @@ public class @PlayerInput : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_Throw;
     private readonly InputAction m_Player_Jump;
     private readonly InputAction m_Player_Reload;
+    private readonly InputAction m_Player_Aim;
+    private readonly InputAction m_Player_Sprint;
+    private readonly InputAction m_Player_NextWeapon;
+    private readonly InputAction m_Player_PreviousWeapon;
+    private readonly InputAction m_Player_Heal;
+    private readonly InputAction m_Player_OpenMenu;
+    private readonly InputAction m_Player_OpenShop;
     public struct PlayerActions
     {
         private @PlayerInput m_Wrapper;
@@ -416,6 +640,13 @@ public class @PlayerInput : IInputActionCollection, IDisposable
         public InputAction @Throw => m_Wrapper.m_Player_Throw;
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
         public InputAction @Reload => m_Wrapper.m_Player_Reload;
+        public InputAction @Aim => m_Wrapper.m_Player_Aim;
+        public InputAction @Sprint => m_Wrapper.m_Player_Sprint;
+        public InputAction @NextWeapon => m_Wrapper.m_Player_NextWeapon;
+        public InputAction @PreviousWeapon => m_Wrapper.m_Player_PreviousWeapon;
+        public InputAction @Heal => m_Wrapper.m_Player_Heal;
+        public InputAction @OpenMenu => m_Wrapper.m_Player_OpenMenu;
+        public InputAction @OpenShop => m_Wrapper.m_Player_OpenShop;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -449,6 +680,27 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                 @Reload.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnReload;
                 @Reload.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnReload;
                 @Reload.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnReload;
+                @Aim.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAim;
+                @Aim.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAim;
+                @Aim.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAim;
+                @Sprint.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSprint;
+                @Sprint.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSprint;
+                @Sprint.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSprint;
+                @NextWeapon.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnNextWeapon;
+                @NextWeapon.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnNextWeapon;
+                @NextWeapon.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnNextWeapon;
+                @PreviousWeapon.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPreviousWeapon;
+                @PreviousWeapon.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPreviousWeapon;
+                @PreviousWeapon.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPreviousWeapon;
+                @Heal.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHeal;
+                @Heal.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHeal;
+                @Heal.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHeal;
+                @OpenMenu.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnOpenMenu;
+                @OpenMenu.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnOpenMenu;
+                @OpenMenu.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnOpenMenu;
+                @OpenShop.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnOpenShop;
+                @OpenShop.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnOpenShop;
+                @OpenShop.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnOpenShop;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -477,6 +729,27 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                 @Reload.started += instance.OnReload;
                 @Reload.performed += instance.OnReload;
                 @Reload.canceled += instance.OnReload;
+                @Aim.started += instance.OnAim;
+                @Aim.performed += instance.OnAim;
+                @Aim.canceled += instance.OnAim;
+                @Sprint.started += instance.OnSprint;
+                @Sprint.performed += instance.OnSprint;
+                @Sprint.canceled += instance.OnSprint;
+                @NextWeapon.started += instance.OnNextWeapon;
+                @NextWeapon.performed += instance.OnNextWeapon;
+                @NextWeapon.canceled += instance.OnNextWeapon;
+                @PreviousWeapon.started += instance.OnPreviousWeapon;
+                @PreviousWeapon.performed += instance.OnPreviousWeapon;
+                @PreviousWeapon.canceled += instance.OnPreviousWeapon;
+                @Heal.started += instance.OnHeal;
+                @Heal.performed += instance.OnHeal;
+                @Heal.canceled += instance.OnHeal;
+                @OpenMenu.started += instance.OnOpenMenu;
+                @OpenMenu.performed += instance.OnOpenMenu;
+                @OpenMenu.canceled += instance.OnOpenMenu;
+                @OpenShop.started += instance.OnOpenShop;
+                @OpenShop.performed += instance.OnOpenShop;
+                @OpenShop.canceled += instance.OnOpenShop;
             }
         }
     }
@@ -509,5 +782,12 @@ public class @PlayerInput : IInputActionCollection, IDisposable
         void OnThrow(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnReload(InputAction.CallbackContext context);
+        void OnAim(InputAction.CallbackContext context);
+        void OnSprint(InputAction.CallbackContext context);
+        void OnNextWeapon(InputAction.CallbackContext context);
+        void OnPreviousWeapon(InputAction.CallbackContext context);
+        void OnHeal(InputAction.CallbackContext context);
+        void OnOpenMenu(InputAction.CallbackContext context);
+        void OnOpenShop(InputAction.CallbackContext context);
     }
 }

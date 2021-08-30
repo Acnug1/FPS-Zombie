@@ -1,56 +1,52 @@
 ﻿using UnityEngine;
-using AppodealAds.Unity.Api; // подключаем простанство имен для работы с Appodeal
-using AppodealAds.Unity.Common; // подключаем простанство имен для реализации интерфейсов Appodeal и использования методов обратного вызова
+using AppodealAds.Unity.Api;
+using AppodealAds.Unity.Common;
 using UnityEngine.Events;
 
-public class AdSettings : MonoBehaviour, IInterstitialAdListener, IRewardedVideoAdListener, INonSkippableVideoAdListener, IBannerAdListener // реализуем интерфейсы для каждого типа рекламы
-{
-    private const string AppKey = "edb00737917865780dc750a812c46ee1bfd289002f0b1820"; // ключ приложения является константой, чтобы мы не могли его переопределять https://app.appodeal.com/apps
+public class AdSettings : MonoBehaviour, IInterstitialAdListener, IRewardedVideoAdListener, INonSkippableVideoAdListener, IBannerAdListener
+    private const string AppKey = "edb00737917865780dc750a812c46ee1bfd289002f0b1820";
 
     public event UnityAction<double, string> OnRewarded;
 
     private void Start()
     {
-        int adTypes = Appodeal.INTERSTITIAL | Appodeal.REWARDED_VIDEO | Appodeal.NON_SKIPPABLE_VIDEO | Appodeal.BANNER_BOTTOM; // задаем типы рекламы, которые будут использоваться в приложении (мы можем их комбинировать с помощью побитового или "|")
-        Appodeal.initialize(AppKey, adTypes, true); // инициализируем Appodeal (параметры: ключ приложения; типы рекламы; согласие на обработку персональных данных)
+        int adTypes = Appodeal.INTERSTITIAL | Appodeal.REWARDED_VIDEO | Appodeal.NON_SKIPPABLE_VIDEO | Appodeal.BANNER_BOTTOM; 
+        Appodeal.initialize(AppKey, adTypes, true);
 
-        Appodeal.setInterstitialCallbacks(this); // установка методов обратного вызова (в параметрах передаем слушателя каждого из интерфейсов, т.е. текущий класс. Он содержит в себе Callbacks интерфейсов)
+        Appodeal.setInterstitialCallbacks(this);
         Appodeal.setRewardedVideoCallbacks(this);
         Appodeal.setNonSkippableVideoCallbacks(this);
         Appodeal.setBannerCallbacks(this);
     }
 
-    public void ShowInterstitial() // показ полноэкранной рекламы
+    public void ShowInterstitial()
     {
-        // проверка на то, что реклама данного типа загружена в целом - Appodeal.isLoaded(), принимает в себя тип рекламы и Appodeal.canShow(), может принимать как тип рекламы, так и название Placement и этот метод будет подчиняться правилам указанным в Placement
-        if (Appodeal.canShow(Appodeal.INTERSTITIAL) && !Appodeal.isPrecache(Appodeal.INTERSTITIAL)) // если реклама готова к показу и не является isPrecache (дешевая или даже бесплатная реклама, которая может быть загружена моментально)
-            Appodeal.show(Appodeal.INTERSTITIAL); // запускаем показ рекламы, указывая тип рекламы в параметрах
+        if (Appodeal.canShow(Appodeal.INTERSTITIAL) && !Appodeal.isPrecache(Appodeal.INTERSTITIAL))
+            Appodeal.show(Appodeal.INTERSTITIAL);
     }
 
-    public void ShowRewardedVideo() // показ рекламы с наградой за просмотр
+    public void ShowRewardedVideo()
     {
-        if (Appodeal.canShow(Appodeal.REWARDED_VIDEO, "Reward") && !Appodeal.isPrecache(Appodeal.REWARDED_VIDEO)) // если реклама готова к показу и не является isPrecache (дешевая или даже бесплатная реклама, которая может быть загружена моментально)
-            Appodeal.show(Appodeal.REWARDED_VIDEO, "Reward"); // запускаем показ рекламы, указывая тип рекламы в параметрах 
-        // (вторым параметром также можно указать название placement https://app.appodeal.com/v2/placements?app_id=698614. Тогда реклама данного типа будет показываться с зависимости от настроек, которые мы укажем в placement)
+        if (Appodeal.canShow(Appodeal.REWARDED_VIDEO, "Reward") && !Appodeal.isPrecache(Appodeal.REWARDED_VIDEO))
+            Appodeal.show(Appodeal.REWARDED_VIDEO, "Reward");
     }
 
-    public void ShowNonSkippableVideo() // показ непропускаемого видео с рекламой
+    public void ShowNonSkippableVideo()
     {
-        if (Appodeal.canShow(Appodeal.NON_SKIPPABLE_VIDEO) && !Appodeal.isPrecache(Appodeal.NON_SKIPPABLE_VIDEO)) // если реклама готова к показу и не является isPrecache (дешевая или даже бесплатная реклама, которая может быть загружена моментально)
-            Appodeal.show(Appodeal.NON_SKIPPABLE_VIDEO); // запускаем показ рекламы, указывая тип рекламы в параметрах
+        if (Appodeal.canShow(Appodeal.NON_SKIPPABLE_VIDEO) && !Appodeal.isPrecache(Appodeal.NON_SKIPPABLE_VIDEO))
+            Appodeal.show(Appodeal.NON_SKIPPABLE_VIDEO);
     }
 
-    public void ShowBanner() // показ баннера с дешевой рекламой
+    public void ShowBanner()
     {
-        Appodeal.show(Appodeal.BANNER_BOTTOM); // показываем баннер снизу
+        Appodeal.show(Appodeal.BANNER_BOTTOM);
     }
 
-    public void HideBanner() // скрыть баннер с рекламой
+    public void HideBanner()
     {
-        Appodeal.hide(Appodeal.BANNER_BOTTOM); // скрываем баннер снизу
+        Appodeal.hide(Appodeal.BANNER_BOTTOM);
     }
 
-    // методы обратного вызова содержащиеся в интерфейсах
     #region InterstitialCallbacks
     public void onInterstitialLoaded(bool isPrecache)
     {
@@ -67,12 +63,9 @@ public class AdSettings : MonoBehaviour, IInterstitialAdListener, IRewardedVideo
         Debug.Log("onInterstitialShowFailed");
     }
 
-    public void onInterstitialShown() // после показа рекламы вызовется данный метод
+    public void onInterstitialShown()
     {
         Debug.Log("onInterstitialShown");
-        // и в нем будет записана логика для перехода на следующий уровень, например, SceneManager.LoadScene(1);
-        // реклама может может быть не показана, так что нужно добавить условие для перехода на следующую сцену также в методах onInterstitialShowFailed() и onInterstitialFailedToLoad()
-        // или предусмотреть дополнительные проверки в методе вызова рекламы
     }
 
     public void onInterstitialClosed()
@@ -112,7 +105,7 @@ public class AdSettings : MonoBehaviour, IInterstitialAdListener, IRewardedVideo
         Debug.Log("onRewardedVideoShown");
     }
 
-    public void onRewardedVideoFinished(double amount, string name) // принимает в себя количество и название валюты, которая начислится после просмотра видео
+    public void onRewardedVideoFinished(double amount, string name)
     {
         Debug.Log($"onRewardedVideoFinished. Amount: {amount}, name: {name}");
         OnRewarded?.Invoke(amount, name);
