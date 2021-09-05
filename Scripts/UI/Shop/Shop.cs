@@ -7,7 +7,7 @@ using UnityEngine;
 public class Shop : MonoBehaviour
 {
     [SerializeField] private Player _player;
-    [SerializeField] private WeaponView _template;
+    [SerializeField] private WeaponItem _template;
     [SerializeField] private Transform _itemContainer;
     [SerializeField] private AudioClip _buySound;
     [SerializeField] private AudioClip _errorSound;
@@ -33,17 +33,17 @@ public class Shop : MonoBehaviour
         view.name = _template.name + (_itemContainer.childCount);
     }
 
-    private void OnSellButtonClick(Weapon weapon, WeaponView view)
+    private void OnSellButtonClick(Weapon weapon, WeaponView weaponView, WeaponItem view)
     {
-        TrySellWeapon(weapon, view);
+        TrySellWeapon(weapon, weaponView, view);
     }
 
-    private void TrySellWeapon(Weapon weapon, WeaponView view)
+    private void TrySellWeapon(Weapon weapon, WeaponView weaponView, WeaponItem view)
     {
-        if (weapon.Price <= _player.Money)
+        if (weaponView.Price <= _player.Money)
         {
             _audioSource.PlayOneShot(_buySound, Settings.Volume);
-            _player.BuyWeapon(weapon);
+            _player.BuyWeapon(weapon, weaponView);
             weapon.Buy();
             view.SellButtonClick -= OnSellButtonClick;
         }

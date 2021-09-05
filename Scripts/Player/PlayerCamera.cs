@@ -22,18 +22,24 @@ public class PlayerCamera : MonoBehaviour
     {
         _input.Enable();
 
-        _input.Player.PickUp.performed += ctx => TryPickUp();
+        _input.Player.Interact.performed += ctx => InteractionWithItem();
         _input.Player.Throw.performed += ctx => Throw();
-        _input.Player.Drop.performed += ctx => Throw(true);
     }
 
     private void OnDisable()
     {
         _input.Disable();
 
-        _input.Player.PickUp.performed -= ctx => TryPickUp();
+        _input.Player.Interact.performed -= ctx => InteractionWithItem();
         _input.Player.Throw.performed -= ctx => Throw();
-        _input.Player.Drop.performed -= ctx => Throw(true);
+    }
+
+    private void InteractionWithItem()
+    {
+        if (!_currentObject)
+            TryPickUp();
+        else
+            Throw(true);
     }
 
     private void TryPickUp()

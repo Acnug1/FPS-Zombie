@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-public class WeaponView : MonoBehaviour
+public class WeaponItem : MonoBehaviour
 {
     [SerializeField] private TMP_Text _label;
     [SerializeField] private TMP_Text _price;
@@ -13,8 +13,9 @@ public class WeaponView : MonoBehaviour
     [SerializeField] private Button _sellButton;
 
     private Weapon _weapon;
+    private WeaponView _weaponView;
 
-    public event UnityAction<Weapon, WeaponView> SellButtonClick;
+    public event UnityAction<Weapon, WeaponView, WeaponItem> SellButtonClick;
 
     private void OnEnable()
     {
@@ -42,15 +43,16 @@ public class WeaponView : MonoBehaviour
     public void Render(Weapon weapon)
     {
         _weapon = weapon;
+        _weaponView = _weapon.GetComponent<WeaponView>();
 
-        _label.text = weapon.Label;
-        _price.text = weapon.Price.ToString();
-        _icon.sprite = weapon.Icon;
+        _label.text = _weaponView.Label;
+        _price.text = _weaponView.Price.ToString();
+        _icon.sprite = _weaponView.Icon;
     }
 
     private void OnButtonClick()
     {
         if (!_weapon.IsBuyed)
-            SellButtonClick?.Invoke(_weapon, this);
+            SellButtonClick?.Invoke(_weapon, _weaponView, this);
     }
 }

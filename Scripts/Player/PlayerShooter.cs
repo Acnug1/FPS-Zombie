@@ -37,6 +37,7 @@ public class PlayerShooter : MonoBehaviour
     private bool _isWeaponChange;
     private Camera _playerCamera;
     private Autoshot _autoshot;
+    private WeaponSoundSettings _weaponSoundSettings;
 
     public event UnityAction<Weapon> WeaponChanged;
 
@@ -201,7 +202,7 @@ public class PlayerShooter : MonoBehaviour
             {
                 _animator.SetTrigger(AnimatorPlayerShooter.Params.Strike);
 
-                _audioSource.PlayOneShot(_currentWeapon.ShotSound, Settings.Volume);
+                _audioSource.PlayOneShot(_weaponSoundSettings.ShotSound, Settings.Volume);
                 StartCoroutine(StrikeDelay());
             }
             else if (_currentWeapon.CurrentAmmunition > 0)
@@ -213,14 +214,14 @@ public class PlayerShooter : MonoBehaviour
                 else
                     _animator.SetTrigger(AnimatorPlayerShooter.Params.Shoot);
 
-                _audioSource.PlayOneShot(_currentWeapon.ShotSound, Settings.Volume);
+                _audioSource.PlayOneShot(_weaponSoundSettings.ShotSound, Settings.Volume);
                 _currentWeapon.Shoot(_shootPoint, _shootsCount, _playerController.PlayerMoves);
 
                 if (_playerCamera.transform.localEulerAngles.x >= 271 || _playerCamera.transform.localEulerAngles.x <= 90 && _playerCamera.transform.localEulerAngles.x >= 0)
                     _playerCamera.transform.localEulerAngles += _backRotationAngleCamera;
             }
             else
-                _audioSource.PlayOneShot(_currentWeapon.NoAmmoShotSound, Settings.Volume);
+                _audioSource.PlayOneShot(_weaponSoundSettings.NoAmmoShotSound, Settings.Volume);
 
             yield return waitForSeconds;
         }
@@ -254,7 +255,7 @@ public class PlayerShooter : MonoBehaviour
             _elapsedTime = 0;
             _onReload = true;
 
-            _audioSource.PlayOneShot(_currentWeapon.ReloadSound, Settings.Volume);
+            _audioSource.PlayOneShot(_weaponSoundSettings.ReloadSound, Settings.Volume);
             _animator.SetTrigger(AnimatorPlayerShooter.Params.Reload);
         }
     }
@@ -341,6 +342,7 @@ public class PlayerShooter : MonoBehaviour
         _isWeaponChange = true;
 
         _currentWeapon = weapon;
+        _weaponSoundSettings = _currentWeapon.GetComponent<WeaponSoundSettings>();
         _currentWeapon.gameObject.SetActive(true);
 
         _animator = _currentWeapon.GetComponent<Animator>();

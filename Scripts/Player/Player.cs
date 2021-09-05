@@ -131,9 +131,9 @@ public class Player : MonoBehaviour
         MoneyChanged?.Invoke(_money);
     }
 
-    public void BuyWeapon(Weapon weapon)
+    public void BuyWeapon(Weapon weapon, WeaponView weaponView)
     {
-        SpendMoney(weapon.Price);
+        SpendMoney(weaponView.Price);
         _playerShooter.AddWeapon(weapon);
     }
 

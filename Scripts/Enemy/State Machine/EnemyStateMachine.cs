@@ -16,8 +16,8 @@ public class EnemyStateMachine : MonoBehaviour
 
     private void Start()
     {
-        _target = GetComponent<Enemy>().Target;
         _enemy = GetComponent<Enemy>();
+        _target = _enemy.Target;
         Reset(_firstState);
     }
 

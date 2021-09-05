@@ -40,8 +40,8 @@ public class PlayerController : MonoBehaviour
     private Footsteps _footSteps;
     private float _lastStepTime;
     private bool _playerMoves;
-    private RaycastHit hit;
-    private Ray ray;
+    private RaycastHit _hit;
+    private Ray _ray;
     private Player _player;
     private Vector3 _rotationCamera;
     private float _pivotOffset = 0.5f;
@@ -186,11 +186,11 @@ public class PlayerController : MonoBehaviour
     {
         if (_lastStepTime <= 0)
         {
-            ray = new Ray(transform.position + new Vector3(0, _pivotOffset, 0), -transform.up);
+            _ray = new Ray(transform.position + new Vector3(0, _pivotOffset, 0), -transform.up);
 
-            if (Physics.Raycast(ray, out hit, 1f, ~_ignoreLayer))
+            if (Physics.Raycast(_ray, out _hit, 1f, ~_ignoreLayer))
             {
-                switch (hit.transform.tag)
+                switch (_hit.transform.tag)
                 {
                     case Concrete:
                         _footSteps.PlayStep(Footsteps.StepsOn.Concrete, Settings.Volume);
