@@ -9,6 +9,7 @@ using UnityEngine.UI;
 
 public class NextLevelMenu : Menu
 {
+    [SerializeField] private AudioClip _levelFinishSound;
     [SerializeField] private EndPoint _endPoint;
     [SerializeField] private GameObject _nextLevelMenu;
     [SerializeField] private float _openMenuDelay;
@@ -19,8 +20,8 @@ public class NextLevelMenu : Menu
 
     private void Awake()
     {
-        _nextLevelMenu.SetActive(false);
         _loadingScreen = GetComponent<LoadingScreen>();
+        _nextLevelMenu.SetActive(false);
     }
 
     private void OnEnable()
@@ -54,7 +55,7 @@ public class NextLevelMenu : Menu
 
     private void OpenMenu()
     {
-        PlayClickSound();
+        PlayEndLevelSound();
 
         SetTouchActive(false);
 
@@ -69,5 +70,10 @@ public class NextLevelMenu : Menu
         EventSystem.current.SetSelectedGameObject(null);
 
         EventSystem.current.SetSelectedGameObject(_firstSelectedButton.gameObject);
+    }
+
+    private void PlayEndLevelSound()
+    {
+        AudioSource.PlayOneShot(_levelFinishSound, Settings.Volume);
     }
 }

@@ -11,12 +11,12 @@ public abstract class Menu : MonoBehaviour
     [SerializeField] private AudioClip _errorSound;
     [SerializeField] private GameObject _touchscreenControl;
 
-    private AudioSource _audioSource;
+    protected AudioSource AudioSource;
     protected int CurrentScene;
 
     private void Start()
     {
-        _audioSource = GetComponent<AudioSource>();
+        AudioSource = GetComponent<AudioSource>();
         CurrentScene = SceneManager.GetActiveScene().buildIndex;
     }
 
@@ -50,11 +50,11 @@ public abstract class Menu : MonoBehaviour
 
     protected void PlayClickSound()
     {
-        _audioSource.PlayOneShot(_clickSound, Settings.Volume);
+        AudioSource.PlayOneShot(_clickSound, Settings.Volume);
     }
 
     protected void PlayErrorSound()
     {
-        _audioSource.PlayOneShot(_errorSound, Settings.Volume);
+        AudioSource.PlayOneShot(_errorSound, Settings.Volume);
     }
 }

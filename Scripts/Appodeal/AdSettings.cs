@@ -3,20 +3,24 @@ using AppodealAds.Unity.Api;
 using AppodealAds.Unity.Common;
 using UnityEngine.Events;
 
-public class AdSettings : MonoBehaviour, IInterstitialAdListener, IRewardedVideoAdListener, INonSkippableVideoAdListener, IBannerAdListener
+public class AdSettings : MonoBehaviour, IInterstitialAdListener, IRewardedVideoAdListener, INonSkippableVideoAdListener, IBannerAdListener, IMrecAdListener
+{
     private const string AppKey = "edb00737917865780dc750a812c46ee1bfd289002f0b1820";
+    private const string Reward = "Reward";
+    private const string Default = "Default";
 
     public event UnityAction<double, string> OnRewarded;
 
     private void Start()
     {
-        int adTypes = Appodeal.INTERSTITIAL | Appodeal.REWARDED_VIDEO | Appodeal.NON_SKIPPABLE_VIDEO | Appodeal.BANNER_BOTTOM; 
+        int adTypes = Appodeal.INTERSTITIAL | Appodeal.REWARDED_VIDEO | Appodeal.NON_SKIPPABLE_VIDEO | Appodeal.BANNER_BOTTOM | Appodeal.MREC;
         Appodeal.initialize(AppKey, adTypes, true);
 
         Appodeal.setInterstitialCallbacks(this);
         Appodeal.setRewardedVideoCallbacks(this);
         Appodeal.setNonSkippableVideoCallbacks(this);
         Appodeal.setBannerCallbacks(this);
+        Appodeal.setMrecCallbacks(this);
     }
 
     public void ShowInterstitial()
@@ -27,8 +31,8 @@ public class AdSettings : MonoBehaviour, IInterstitialAdListener, IRewardedVideo
 
     public void ShowRewardedVideo()
     {
-        if (Appodeal.canShow(Appodeal.REWARDED_VIDEO, "Reward") && !Appodeal.isPrecache(Appodeal.REWARDED_VIDEO))
-            Appodeal.show(Appodeal.REWARDED_VIDEO, "Reward");
+        if (Appodeal.canShow(Appodeal.REWARDED_VIDEO, Reward) && !Appodeal.isPrecache(Appodeal.REWARDED_VIDEO))
+            Appodeal.show(Appodeal.REWARDED_VIDEO, Reward);
     }
 
     public void ShowNonSkippableVideo()
@@ -45,6 +49,20 @@ public class AdSettings : MonoBehaviour, IInterstitialAdListener, IRewardedVideo
     public void HideBanner()
     {
         Appodeal.hide(Appodeal.BANNER_BOTTOM);
+    }
+
+    public void ShowMrecVideo()
+    {
+        int yAxis = Screen.currentResolution.height - Screen.currentResolution.height / 10;
+        int xGravity = Appodeal.BANNER_HORIZONTAL_CENTER;
+
+        if (Appodeal.canShow(Appodeal.MREC) && !Appodeal.isPrecache(Appodeal.MREC))
+            Appodeal.showMrecView(yAxis, xGravity, Default);
+    }
+
+    public void HideMrec()
+    {
+        Appodeal.hideMrecView();
     }
 
     #region InterstitialCallbacks
@@ -190,4 +208,31 @@ public class AdSettings : MonoBehaviour, IInterstitialAdListener, IRewardedVideo
         Debug.Log("onBannerExpired");
     }
     #endregion
+
+    #region MrecCallbacks
+    public void onMrecLoaded(bool isPrecache)
+    {
+        Debug.Log($"onMrecLoaded. IsPrecache: {isPrecache}");
+    }
+
+    public void onMrecFailedToLoad()
+    {
+        Debug.Log($"onMrecFailedToLoad");
+    }
+
+    public void onMrecShown()
+    {
+        Debug.Log($"onMrecShown");
+    }
+
+    public void onMrecClicked()
+    {
+        Debug.Log($"onMrecClicked");
+    }
+
+    public void onMrecExpired()
+    {
+        Debug.Log($"onMrecExpired");
+    }
+#endregion
 }

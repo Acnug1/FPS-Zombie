@@ -11,7 +11,8 @@
                     "id": "d15a54a9-0072-4425-9ebb-df5631e916f2",
                     "expectedControlType": "Vector2",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": true
                 },
                 {
                     "name": "Look",
@@ -19,7 +20,8 @@
                     "id": "bb51b8c6-a155-4501-ac80-57f5a61fa756",
                     "expectedControlType": "Vector2",
                     "processors": "InvertVector2(invertX=false,invertY=false)",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": true
                 },
                 {
                     "name": "Click",
@@ -27,23 +29,17 @@
                     "id": "669039fb-7f45-483f-ad46-02d9ecabbebc",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "Press"
+                    "interactions": "Press",
+                    "initialStateCheck": false
                 },
                 {
-                    "name": "PickUp",
+                    "name": "Interact",
                     "type": "Button",
                     "id": "dcac7897-f00d-461e-a360-15a7cb6fcb26",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
-                },
-                {
-                    "name": "Drop",
-                    "type": "Button",
-                    "id": "5698380d-0c60-425a-9596-afc3ea07cef9",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Throw",
@@ -51,7 +47,8 @@
                     "id": "541deaaa-0c2c-4b57-800c-1b1c1da4c58e",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Jump",
@@ -59,7 +56,8 @@
                     "id": "f395bcb0-c704-4e15-8608-62927a2e41cd",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Reload",
@@ -67,7 +65,8 @@
                     "id": "89688925-423a-41fc-9686-e1ceeb25c964",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Aim",
@@ -75,7 +74,8 @@
                     "id": "41563f99-dd78-4690-8117-084084c20561",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Sprint",
@@ -83,7 +83,8 @@
                     "id": "11eed2f5-9d53-412f-9cf9-b98582a4ae8f",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "Press"
+                    "interactions": "Press",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "NextWeapon",
@@ -91,7 +92,8 @@
                     "id": "c24744ba-48df-4d78-acf8-f6af8def0e9b",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "PreviousWeapon",
@@ -99,7 +101,8 @@
                     "id": "bb9cdd28-c617-4b57-9311-d7dccc571b26",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Heal",
@@ -107,7 +110,8 @@
                     "id": "147aee6a-35e2-4711-a978-8bd6b8d6f8bf",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "OpenMenu",
@@ -115,7 +119,8 @@
                     "id": "25b7bf32-7252-452c-9fd6-55230e18182f",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "OpenShop",
@@ -123,7 +128,8 @@
                     "id": "be3688b9-9917-41cb-950a-07fb0b288e80",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -244,7 +250,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Mouse and Keyboard",
-                    "action": "PickUp",
+                    "action": "Interact",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -255,29 +261,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "PickUp",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "439ada6f-37d5-440b-8d8f-aa5a96c0a8e8",
-                    "path": "<Keyboard>/q",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Mouse and Keyboard",
-                    "action": "Drop",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "8f98899a-3872-406d-b120-aee4a9d938ee",
-                    "path": "<Gamepad>/buttonEast",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "Drop",
+                    "action": "Interact",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -295,7 +279,7 @@
                 {
                     "name": "",
                     "id": "616d2de6-ce1b-4a14-a091-b36816addd88",
-                    "path": "<Gamepad>/rightShoulder",
+                    "path": "<Gamepad>/buttonEast",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
@@ -383,7 +367,7 @@
                 {
                     "name": "",
                     "id": "08de9fcb-2a4e-4a2c-b29f-499e8a3c3f59",
-                    "path": "<Gamepad>/leftStickPress",
+                    "path": "<Gamepad>/rightShoulder",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",

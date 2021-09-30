@@ -13,11 +13,11 @@ public class MainMenu : Menu
     [SerializeField] private Transform _switchLevelButtonsContainer;
     [SerializeField] private Button _firstSelectedButton;
 
+    private const string LevelComplete = "LevelComplete";
+    private int _levelComplete;
     private int _newScene;
     private LoadingScreen _loadingScreen;
     private int _levelsCount;
-    private int _levelComplete;
-    private const string LevelComplete = "LevelComplete";
 
     private void Awake()
     {
@@ -56,6 +56,7 @@ public class MainMenu : Menu
     protected override void SelectFirstButton()
     {
         EventSystem.current.SetSelectedGameObject(null);
+
         EventSystem.current.SetSelectedGameObject(_firstSelectedButton.gameObject);
     }
 

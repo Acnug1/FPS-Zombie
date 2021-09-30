@@ -9,7 +9,7 @@ public class PauseMenu : Menu
     [SerializeField] private Player _player;
     [SerializeField] private OpticalSight _opticalSight;
     [SerializeField] private GameObject _pauseMenu;
-    [SerializeField] private GameObject _shop;
+    [SerializeField] private Shop _shop;
     [SerializeField] private Button _firstSelectedPauseMenuButton;
     [SerializeField] private Button _firstSelectedShopButton;
 
@@ -19,7 +19,7 @@ public class PauseMenu : Menu
     private void Awake()
     {
         _pauseMenu.SetActive(false);
-        _shop.SetActive(false);
+        _shop.gameObject.SetActive(false);
         _input = new PlayerInput();
     }
 
@@ -27,22 +27,24 @@ public class PauseMenu : Menu
     {
         _player.Died += OnPlayerDied;
         _opticalSight.ZoomStarted += OnZoomStarted;
+        _shop.WeaponSold += OnWeaponSold;
 
         _input.Enable();
 
         _input.Player.OpenMenu.performed += ctx => OpenPanel(_pauseMenu);
-        _input.Player.OpenShop.performed += ctx => OpenPanel(_shop);
+        _input.Player.OpenShop.performed += ctx => OpenPanel(_shop.gameObject);
     }
 
     private void OnDisable()
     {
         _player.Died -= OnPlayerDied;
         _opticalSight.ZoomStarted -= OnZoomStarted;
+        _shop.WeaponSold -= OnWeaponSold;
 
         _input.Disable();
 
         _input.Player.OpenMenu.performed -= ctx => OpenPanel(_pauseMenu);
-        _input.Player.OpenShop.performed -= ctx => OpenPanel(_shop);
+        _input.Player.OpenShop.performed -= ctx => OpenPanel(_shop.gameObject);
     }
 
     private void OnPlayerDied()
@@ -58,7 +60,7 @@ public class PauseMenu : Menu
 
     public void OpenPanel(GameObject panel)
     {
-        if (_isZoom || panel.TryGetComponent(out Shop shop) && _player.CurrentHealth <= 0 || _shop.activeSelf || _pauseMenu.activeSelf)
+        if (_isZoom || panel.TryGetComponent(out Shop shop) && _player.CurrentHealth <= 0 || _shop.gameObject.activeSelf || _pauseMenu.activeSelf)
             PlayErrorSound();
         else
         {
@@ -73,11 +75,16 @@ public class PauseMenu : Menu
         }
     }
 
+    private void OnWeaponSold()
+    {
+        SelectFirstButton();
+    }
+
     protected override void SelectFirstButton()
     {
         EventSystem.current.SetSelectedGameObject(null);
 
-        if (_shop.activeSelf)
+        if (_shop.gameObject.activeSelf)
             EventSystem.current.SetSelectedGameObject(_firstSelectedShopButton.gameObject);
         else if (_pauseMenu.activeSelf)
             EventSystem.current.SetSelectedGameObject(_firstSelectedPauseMenuButton.gameObject);

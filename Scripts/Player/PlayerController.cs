@@ -73,6 +73,7 @@ public class PlayerController : MonoBehaviour
         _physicsMovement = GetComponent<PhysicsMovement>();
         _audioSource.playOnAwake = false;
         _defaultMoveSpeed = _moveSpeed;
+        _rotationCamera = _playerCamera.transform.localEulerAngles;
     }
 
     private void OnEnable()
@@ -123,10 +124,9 @@ public class PlayerController : MonoBehaviour
         {
             _direction = _input.Player.Move.ReadValue<Vector2>();
 
-            Move(_direction);
-
             _rotate = _input.Player.Look.ReadValue<Vector2>();
 
+            Move(_direction);
             Look(_rotate);
 
             InAirCheck();

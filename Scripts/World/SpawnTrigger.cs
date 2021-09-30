@@ -12,7 +12,7 @@ public class SpawnTrigger : MonoBehaviour
 
     public bool IsReached => _isReached;
 
-    private void Start()
+    private void Awake()
     {
         _spawners = GetComponentsInChildren<Spawner>();
 

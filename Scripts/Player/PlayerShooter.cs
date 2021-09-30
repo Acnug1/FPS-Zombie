@@ -151,17 +151,23 @@ public class PlayerShooter : MonoBehaviour
         ReloadWeapon();
 
         TakeSelectedWeapon();
+    }
 
+    private void LateUpdate()
+    {
         ReturnAngleCamera(_playerController.RotationCamera);
     }
 
     private void ReturnAngleCamera(Vector3 startRotationCamera)
     {
-        float newX = Mathf.LerpAngle(_playerCamera.transform.localEulerAngles.x, startRotationCamera.x, Time.deltaTime * _returnTimeCamera);
-        float newY = Mathf.LerpAngle(_playerCamera.transform.localEulerAngles.y, startRotationCamera.y, Time.deltaTime * _returnTimeCamera);
-        float newZ = Mathf.LerpAngle(_playerCamera.transform.localEulerAngles.z, startRotationCamera.z, Time.deltaTime * _returnTimeCamera);
+        if (_playerCamera.transform.localEulerAngles != startRotationCamera)
+        {
+            float newX = Mathf.LerpAngle(_playerCamera.transform.localEulerAngles.x, startRotationCamera.x, Time.deltaTime * _returnTimeCamera);
+            float newY = Mathf.LerpAngle(_playerCamera.transform.localEulerAngles.y, startRotationCamera.y, Time.deltaTime * _returnTimeCamera);
+            float newZ = Mathf.LerpAngle(_playerCamera.transform.localEulerAngles.z, startRotationCamera.z, Time.deltaTime * _returnTimeCamera);
 
-        _playerCamera.transform.localEulerAngles = new Vector3(newX, newY, newZ);
+            _playerCamera.transform.localEulerAngles = new Vector3(newX, newY, newZ);
+        }
     }
 
     private void OnTargetSpotted(bool isTargetSpotted)

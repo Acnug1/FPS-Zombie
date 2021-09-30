@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(AudioSource))]
 
@@ -14,6 +15,8 @@ public class Shop : MonoBehaviour
     [SerializeField] private WeaponsStorage _weaponsStorage;
 
     private AudioSource _audioSource;
+
+    public event UnityAction WeaponSold;
 
     private void Start()
     {
@@ -46,6 +49,7 @@ public class Shop : MonoBehaviour
             _player.BuyWeapon(weapon, weaponView);
             weapon.Buy();
             view.SellButtonClick -= OnSellButtonClick;
+            WeaponSold?.Invoke();
         }
         else
             _audioSource.PlayOneShot(_errorSound, Settings.Volume);
