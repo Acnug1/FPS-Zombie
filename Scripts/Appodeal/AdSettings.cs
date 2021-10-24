@@ -3,11 +3,18 @@ using AppodealAds.Unity.Api;
 using AppodealAds.Unity.Common;
 using UnityEngine.Events;
 
+[RequireComponent(typeof(AudioSource))]
+
 public class AdSettings : MonoBehaviour, IInterstitialAdListener, IRewardedVideoAdListener, INonSkippableVideoAdListener, IBannerAdListener, IMrecAdListener
 {
+    [SerializeField] private AudioClip _clickSound;
+    [SerializeField] private AudioClip _errorSound;
+
     private const string AppKey = "edb00737917865780dc750a812c46ee1bfd289002f0b1820";
     private const string Reward = "Reward";
     private const string Default = "Default";
+
+    private AudioSource _audioSource;
 
     public event UnityAction<double, string> OnRewarded;
 
@@ -21,24 +28,41 @@ public class AdSettings : MonoBehaviour, IInterstitialAdListener, IRewardedVideo
         Appodeal.setNonSkippableVideoCallbacks(this);
         Appodeal.setBannerCallbacks(this);
         Appodeal.setMrecCallbacks(this);
+
+        _audioSource = GetComponent<AudioSource>();
     }
 
     public void ShowInterstitial()
     {
         if (Appodeal.canShow(Appodeal.INTERSTITIAL) && !Appodeal.isPrecache(Appodeal.INTERSTITIAL))
+        {
+            PlayClickSound();
             Appodeal.show(Appodeal.INTERSTITIAL);
+        }
+        else
+            PlayErrorSound();
     }
 
     public void ShowRewardedVideo()
     {
         if (Appodeal.canShow(Appodeal.REWARDED_VIDEO, Reward) && !Appodeal.isPrecache(Appodeal.REWARDED_VIDEO))
+        {
+            PlayClickSound();
             Appodeal.show(Appodeal.REWARDED_VIDEO, Reward);
+        }
+        else
+            PlayErrorSound();
     }
 
     public void ShowNonSkippableVideo()
     {
         if (Appodeal.canShow(Appodeal.NON_SKIPPABLE_VIDEO) && !Appodeal.isPrecache(Appodeal.NON_SKIPPABLE_VIDEO))
+        {
+            PlayClickSound();
             Appodeal.show(Appodeal.NON_SKIPPABLE_VIDEO);
+        }
+        else
+            PlayErrorSound();
     }
 
     public void ShowBanner()
@@ -123,10 +147,10 @@ public class AdSettings : MonoBehaviour, IInterstitialAdListener, IRewardedVideo
         Debug.Log("onRewardedVideoShown");
     }
 
-    public void onRewardedVideoFinished(double amount, string name)
+    public void onRewardedVideoFinished(double amount, string currencyName)
     {
-        Debug.Log($"onRewardedVideoFinished. Amount: {amount}, name: {name}");
-        OnRewarded?.Invoke(amount, name);
+        Debug.Log($"onRewardedVideoFinished. Amount: {amount}, currency name: {currencyName}");
+        OnRewarded?.Invoke(amount, currencyName);
     }
 
     public void onRewardedVideoClosed(bool finished)
@@ -234,5 +258,15 @@ public class AdSettings : MonoBehaviour, IInterstitialAdListener, IRewardedVideo
     {
         Debug.Log($"onMrecExpired");
     }
-#endregion
+    #endregion
+
+    private void PlayClickSound()
+    {
+        _audioSource.PlayOneShot(_clickSound, Settings.Volume);
+    }
+
+    private void PlayErrorSound()
+    {
+        _audioSource.PlayOneShot(_errorSound, Settings.Volume);
+    }
 }

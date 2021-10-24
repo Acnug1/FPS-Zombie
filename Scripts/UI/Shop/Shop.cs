@@ -13,10 +13,21 @@ public class Shop : MonoBehaviour
     [SerializeField] private AudioClip _buySound;
     [SerializeField] private AudioClip _errorSound;
     [SerializeField] private WeaponsStorage _weaponsStorage;
+    [SerializeField] private AdSettings _adSettings;
 
     private AudioSource _audioSource;
 
     public event UnityAction WeaponSold;
+
+    private void OnEnable()
+    {
+        _adSettings.OnRewarded += OnRewardedVideoFinished;
+    }
+
+    private void OnDisable()
+    {
+        _adSettings.OnRewarded -= OnRewardedVideoFinished;
+    }
 
     private void Start()
     {
@@ -53,5 +64,10 @@ public class Shop : MonoBehaviour
         }
         else
             _audioSource.PlayOneShot(_errorSound, Settings.Volume);
+    }
+
+    private void OnRewardedVideoFinished(double reward, string currencyName)
+    {
+        _player.AddMoney((int)reward);
     }
 }

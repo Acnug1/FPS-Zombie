@@ -15,7 +15,7 @@ public class ReviewRequester : MonoBehaviour
     {
         _levelComplete = PlayerPrefs.GetInt(LevelComplete, 0);
 
-        if (_levelComplete >= 3)
+        if (_levelComplete >= 1)
             StartCoroutine(RequestInAppReview());
     }
 

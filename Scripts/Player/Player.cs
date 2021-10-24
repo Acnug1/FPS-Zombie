@@ -121,14 +121,20 @@ public class Player : MonoBehaviour
 
     public void AddMoney(int reward)
     {
-        _money += reward;
-        MoneyChanged?.Invoke(_money);
+        if (reward > 0)
+        {
+            _money += reward;
+            MoneyChanged?.Invoke(_money);
+        }
     }
 
     private void SpendMoney(int price)
     {
-        _money -= price;
-        MoneyChanged?.Invoke(_money);
+        if (price > 0)
+        {
+            _money -= price;
+            MoneyChanged?.Invoke(_money);
+        }
     }
 
     public void BuyWeapon(Weapon weapon, WeaponView weaponView)
@@ -140,7 +146,7 @@ public class Player : MonoBehaviour
     private void Heal()
     {
         if (_currentHealth != _health && _firstAidKitCount > 0 && !_isHealing
-            && !_playerShooter.OnReload && !_playerShooter.IsWeaponChange 
+            && !_playerShooter.OnReload && !_playerShooter.IsWeaponChange
             && _currentHealth > 0 && Time.timeScale > 0)
         {
             _isHealing = true;
