@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee22769480a365c43a9c4d1f665f4517, type: 3}
+  m_Name: Knife_Shell
+  m_EditorClassIdentifier: 
+  _damage: 50
+  _force: 50
+  _maxDistance: 1.5
+  _bloodEffect: {fileID: 1553035428658780941, guid: 84da274fe0f764341bb1669a764ea7ee, type: 3}
+  _decalHitConcrete: {fileID: 19800002, guid: 20992c82141dcea4bbc4a70297b6c22e, type: 3}
+  _decalHitMetal: {fileID: 19800002, guid: 6470a2a833f2a6d428388f976d34b28c, type: 3}
+  _decalHitWood: {fileID: 19800002, guid: 256bdd13d2b8f0b4a86759ad31a576c0, type: 3}
+  _decalHitDirt: {fileID: 19800002, guid: 9a2ed1698c9bfac46ab474baf7ef4e91, type: 3}
+  _decalHitSand: {fileID: 19800002, guid: 3b91ea4e8d56f1a46804be86bd57096c, type: 3}
+  _decalHitSoftBody: {fileID: 19800002, guid: bac61d7543deb0949b5d1f4b129fbeb7, type: 3}
+  _enemyHitSound: {fileID: 8300000, guid: 0bd1a2a54b677034bae26c8965eccd47, type: 3}
+  _hitSound: {fileID: 8300000, guid: f5a1eddd2ace5b749a5c947ad479d5d0, type: 3}
+  _isSmallArms: 0
+  _ignoreLayer:
+    serializedVersion: 2
+    m_Bits: 243494
+  _bloodHoles:
+  - {fileID: 187634403587829445, guid: 2112f0bc9f4ca2b45927428dd488961e, type: 3}
+  - {fileID: 187634403587829445, guid: 622d435b1f391b641832ba460494879a, type: 3}
+  _bloodSplatters:
+  - {fileID: 187634403587829445, guid: bc48ab753a9d21942ad55e411748e93e, type: 3}
+  - {fileID: 187634403587829445, guid: 698693d0e2f0abe418ba39eabcff8092, type: 3}
