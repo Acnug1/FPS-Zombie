@@ -51,6 +51,7 @@ public class WaypointMovementState : State
         if (Enemy.Health > 0)
             MoveToPoints();
         else
+        if (!_navMeshAgent.isStopped)
         {
             _navMeshAgent.isStopped = true;
             _animator.StopPlayback();

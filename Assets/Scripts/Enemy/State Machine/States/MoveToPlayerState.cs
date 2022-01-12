@@ -63,6 +63,7 @@ public class MoveToPlayerState : State
             _lastStepTime -= Time.deltaTime;
         }
         else
+        if (!_navMeshAgent.isStopped)
         {
             _navMeshAgent.isStopped = true;
             _animator.StopPlayback();
